@@ -1,0 +1,50 @@
+ #login {
+    background: linear-gradient(120deg, #4c79d3 44.9%, #fff 45%) no-repeat fixed;
+ }
+
+ .text-login {
+    color: #fff;
+    font-size: 18px;
+    font-weight: 500;
+ }
+
+ .coins {
+    position: absolute;
+    bottom: 2em;
+    
+ }
+
+ .pocket {
+    max-width: 100%;
+ }
+
+ .semibold {
+    font-weight: 500;
+    color: #222;
+ }
+
+.button-login {
+    border-radius: 10px;
+    background-color: #4e0070;
+    color: #fff;
+    width: 50%;
+    margin: 0 25%;
+    transition: all 500ms;
+}
+
+.button-login:hover {
+    background-color: #4c79d3;
+    color: #fff;
+}
+
+.criar-conta {
+    text-decoration: none;
+    font-weight: 600;
+    color: #4e0070;
+    cursor: pointer;
+    transition: all 500ms;
+}
+
+.criar-conta:hover {
+    color: #4c79d3;
+}
