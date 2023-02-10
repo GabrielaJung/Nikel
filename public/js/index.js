@@ -1,7 +1,36 @@
 
 const myModal = new bootstrap.Modal("#register-modal");
 
+// ---------- LOGIN ACCOUNT ---------- //
+document.getElementById("login-form").addEventListener("submit", function(e){
+    e.preventDefault();
 
+    const email = document.getElementById("login-input-email").value;
+    const password = document.getElementById("login-input-password").value;   
+    const checkSession = document.getElementById("session-check").checked;
+
+    const account = getAccount(email);
+
+    if (!account){
+        alert("Oops! Verifique o usuário ou a senha.");
+        return;
+    }
+
+    if(account){
+        if(account.password !== password){
+            alert("Oops! Verifique o usuário ou a senha.");
+            return;            
+        } 
+        
+        saveSession(email, checkSession);
+        window.location.href = "home.html";      
+
+    }
+
+
+})
+
+// ---------- CREATE ACCOUNT ---------- //
 document.getElementById("signup-form").addEventListener("submit", function(e){
     e.preventDefault();
 
@@ -28,6 +57,27 @@ document.getElementById("signup-form").addEventListener("submit", function(e){
     alert("Conta criada com sucesso!")
 });
 
+
+
 function saveAccount(data){
     localStorage.setItem(data.login, JSON.stringify(data));
+}
+
+function saveSession(data, saveSession){
+    if(saveSession){
+        localStorage.setItem("session", data);
+    }
+    
+    sessionStorage.setItem("logged", data);
+}
+
+
+function getAccount(key){
+    const account = localStorage.getItem(key);
+
+    if(account){
+        return JSON.parse(account);
+    }
+
+    return "";
 }
