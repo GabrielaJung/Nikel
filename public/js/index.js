@@ -1,5 +1,9 @@
 
 const myModal = new bootstrap.Modal("#register-modal");
+let logged = sessionStorage.getItem("logged");
+const session = localStorage.getItem("session");
+
+checkLogged();
 
 // ---------- LOGIN ACCOUNT ---------- //
 document.getElementById("login-form").addEventListener("submit", function(e){
@@ -58,6 +62,20 @@ document.getElementById("signup-form").addEventListener("submit", function(e){
 });
 
 
+// ---------- FUNCTIONS ---------- //
+
+function checkLogged (){
+    if (session){
+        sessionStorage.setItem("logged", session);
+        logged = session;
+    }
+
+    if (logged){
+        saveSession(logged, session);
+
+        window.location.href = "home.html"
+    }
+}
 
 function saveAccount(data){
     localStorage.setItem(data.login, JSON.stringify(data));
