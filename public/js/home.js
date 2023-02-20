@@ -11,7 +11,30 @@ document.getElementById("button-logout").addEventListener("click", logout);
 checkLogged();
 
 
-// ---------------------------------------------------------------- 21:20 
+// ---------- ADICIONAR LANÇAMENTO ---------- //
+
+document.getElementById("transaction-form").addEventListener("submit", function (e){
+    e.preventDefault();
+
+    const value = parseFloat(document.getElementById("value-input").value);
+    const description = document.getElementById("description-input").value;
+    const date = document.getElementById("date-input").value;
+    const type = document.querySelector('input[name="type-input"]:checked').value;
+
+    data.transactions.unshift({
+        value:value, 
+        type:type, 
+        description:description, 
+        date:date
+    });
+
+    saveData(data);
+    e.target.reset();
+    myModal.hide();
+
+    alert("lançamento add");
+
+});
 
 
 // ---------- FUNCTIONS ---------- //
@@ -39,4 +62,8 @@ function logout (){
     localStorage.removeItem("session");
 
     window.location.href = "index.html";
+}
+
+function saveData (data){
+    localStorage.setItem(data.login, JSON.stringify(data));
 }
